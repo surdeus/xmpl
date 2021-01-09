@@ -1,0 +1,12 @@
+vk-examples
+========
+Set of examples to show how to work with VK API.
+
+Configuration
+-------------
+
+You can get your configuration values here:
+ * [ts, server, key]( https://vk.com/dev/groups.getLongPollServer )
+ * [group_id]( https://regvk.com/id/ )
+ * [token] - https://vk.com/[group_link_name]?act=tokens
+
