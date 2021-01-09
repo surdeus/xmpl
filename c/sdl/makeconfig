@@ -1,0 +1,7 @@
+CC = cc
+LD = ${CC}
+LIB = -L/usr/lib -lSDL2 -lc
+CPPFLAGS =
+CFLAGS = ${CPPFLAGS}
+LDFLAGS = ${LIB}
+

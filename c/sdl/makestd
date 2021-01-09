@@ -1,0 +1,12 @@
+SRC = $(shell ls *.c)
+OBJ = ${SRC:%.c=%.o}
+TGT = ${NAME}
+.PHONY: all clean
+all: ${TGT}
+${TGT} : ${OBJ}
+	${LD} -o $@ ${LDFLAGS} $<
+%.o: %.c
+	${CC} -c -o $@ ${CFLAGS} $<
+clean:
+	rm -rf *.o ${TGT}
+
