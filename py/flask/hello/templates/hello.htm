@@ -1,0 +1,7 @@
+{% extends "master.htm" %}
+{% block title %}Home{% endblock %}
+{% block body%}
+Hello, {{name}}!
+Wanna return to the <a href="{{url_for('index')}}">root page?</a>
+{% endblock%}
+
