@@ -1,0 +1,5 @@
+Modules in Lua are based on it's tables system.
+Module name is the same as the file name.
+Module file must return the table with any content
+you need. (functions, variables etc)
+
