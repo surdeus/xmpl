@@ -1,0 +1,3 @@
+#!/bin/sh
+cc -o simple -lX11 -lX11 main.c
+
