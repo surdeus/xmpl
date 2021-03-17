@@ -1,0 +1,10 @@
+SASSFILES = default.sass
+CSSFILES = ${SASSFILES:%.sass=%.css}
+TARG = $CSSFILES
+all:V: $TARG
+%.css : %.sass
+	sassc $prereq >$target
+run:
+	goblin ls *.sass | entr mk
+clean:V:
+	rm -f $TARG

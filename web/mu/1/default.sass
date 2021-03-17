@@ -1,0 +1,75 @@
+$content_width: 1000px
+
+/* SCSS RGB */
+$charcoal: rgba(38, 70, 83, 1);
+$persian-green: rgba(42, 157, 143, 1);
+$orange-yellow-crayola: rgba(233, 196, 106, 1);
+$sandy-brown: rgba(244, 162, 97, 1);
+$burnt-sienna: rgba(231, 111, 81, 1);
+
+$card_colors: (1:$charcoal, 2:$persian-green, 3:$orange-yellow-crayola, 4:white, 5:$burnt-sienna)
+
+html
+ margin: 0.5rem
+ background-color: $orange-yellow-crayola
+
+body
+ width: $content_width
+ margin-top: 10rem
+ align: center
+ background-color: $charcoal
+ padding: 1rem
+
+.popup
+ z-index: 11
+ width: $content_width
+ position: fixed
+ top: 1rem
+ left: 1rem
+ width: 95%
+ background-color: $persian-green
+ display: inline-flex
+ flex-direction: row
+ border-style: solid
+ border-width: 0.1em
+ vertical-align: middle
+ p
+  display: inline
+  vertical-align: middle
+ .logo
+  margin: 1ch
+  width: 10%
+  height: 100%
+ .butt
+  margin-left: auto
+  margin-right: 1em
+  margin-top: auto
+  margin-bottom: auto
+  
+.cardholder
+ display: flex
+ flex-direction: row
+ flex-wrap: wrap
+ .card
+  background-color: $sandy-brown
+  margin: 2ch
+  padding: 1ch
+  border-style: solid
+  border-color: black
+  border-width: 0.25em
+  flex-direction: row
+  width: 15em
+  height: 25em
+  .cardimg
+   margin: 0.1em
+   width: 90%
+   height: 40%
+
+@each $i, $color in $card_colors
+ .object-#{$i}
+  background-color: #{$color}
+  display: inline
+  position: relative
+  top: 2em
+  left: 1em
+  
