@@ -1,0 +1,3 @@
+<$MKINCDIR/config
+PROGNAME = pipe
+CFILES = main.c

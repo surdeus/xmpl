@@ -1,0 +1,7 @@
+# pipe
+
+Simple pipe example. Sends "Hello, World!" strings
+to the program specified as arguments:
+
+	% pipe tr a-z A-Z
+
