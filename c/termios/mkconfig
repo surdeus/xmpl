@@ -1,0 +1,3 @@
+<$MKINCDIR/config
+PROGNAME = termios
+CFILES = main.c
