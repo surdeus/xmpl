@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- This is example of how we can include component.
+     The way tag name and it's attributes and inside value would be the interface. -->
+<script src="show-hello.js"></script>
+
+<title>Hello, Shadow Tree!</title>
+<style>
+p {
+	/* Those not affect paragraphs inside the components
+		because of incapsulation.*/
+	background-color: red ;
+}
+</style>
+
+</head>
+<body>
+
+<show-hello name="John">This is thing inside <strong>with other tags</strong>.</show-hello>
+<show-hello name="Andreo">And yet another</show-hello>
+
+</body>
+</html>
