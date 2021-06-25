@@ -1,0 +1,8 @@
+
+button, #value  {
+	display: inline-block;
+}
+
+#value {
+	color: red ;
+}
