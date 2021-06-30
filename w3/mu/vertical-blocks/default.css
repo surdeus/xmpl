@@ -1,0 +1,30 @@
+.cols {
+  overflow: auto;
+}
+
+.left {
+  background-color: red;
+  display: inline-block;
+  float: left;
+  width: 25%;
+}
+
+.middle {
+  background-color: green;
+  display: inline-block;
+  float: none;
+  width: 45%;
+  position: relative;
+  left: 2.5%;
+}
+
+.right {
+  background-color: blue;
+  display: inline-block;
+  float: right;
+  width: 25%;
+}
+
+footer {
+  background: lime;
+}
