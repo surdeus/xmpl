@@ -129,7 +129,7 @@ func run() {
 		O: Object {
 			T: Transform {
 				P: win.Bounds().Center(),
-				S: pixel.Vec{1, 1},
+				S: pixel.Vec{3, 1},
 			},
 			S: goph_sprite,
 		},
@@ -148,6 +148,7 @@ func run() {
 		MoveSpeed: 100.0,
 	}
 	AddObject(&goph_player1)
+
 	lasttime = time.Now()
 	for !win.Closed() {
 		setDT()
