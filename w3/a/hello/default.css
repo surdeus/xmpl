@@ -1,0 +1,100 @@
+:root {
+	--bounce-val1: 20rem;
+	--bounce-val2: 1.5rem;
+	--bounce-val3: 0;
+	--op-val1: .2;
+	--op-val2: .7;
+	--op-val3: 1;
+}
+
+.intro .content h1,
+.intro .content p,
+.intro .content .action-wrapper .btn {
+	opacity: 0;
+	animation-delay: 0.3s;
+	animation-fill-mode: forwards;
+}
+
+.intro .bouncy.content h1 {
+	display: inline-block;
+	background: red;
+	animation-name: bounce-right;
+}
+
+@keyframes bounce-right {
+	0% {
+		opacity: var(--op-val1);
+		transform: translate(calc(-1*var(--bounce-val1)), calc(-1*var(--bounce-val1)));
+	} 60% {
+		opacity: var(--op-val2);
+		transform: translate(var(--bounce-val2), var(--bounce-val2));
+	} 100% {
+		opacity: var(--op-val3);
+		transform: translate(var(--bounce-val3), var(--bounce-val3),);
+	}
+}
+
+.intro .bouncy.content p {
+	background: green;
+	animation-name: bounce-left;
+}
+
+@keyframes bounce-left {
+	0% {
+		opacity: var(--op-val1);
+		transform: translateX(var(--bounce-val1));
+	} 60% {
+		opacity: var(--op-val2);
+		transform: translateX(calc(-1*var(--bounce-val2)));
+	} 100% {
+		opacity: var(--op-val3);
+		transform: translateX(var(--bounce-val3));
+	}
+}
+
+.intro .bouncy.content h1,
+.intro .bouncy.content p {
+	animation-duration: 2s;
+}
+
+.intro .bouncy.content .action-wrapper .btn {
+	animation-name: bounce-rotate;
+	animation-duration: 10s;
+}
+
+.intro .content.bouncy .action-wrapper .btn.main-action {
+	animation-delay: 0.4s;
+}
+
+@keyframes bounce-rotate {
+  0% {
+    opacity: -1;
+    background: black;
+	color: red;
+  } 100% {
+    opacity: 1;
+    background: transparent;
+    color: blue;
+  }
+}
+
+.intro .content.bouncy p.loop {
+	display: inline-block;
+	color: orange;
+	background: transparent;
+	opacity: 1;
+	animation-name: bounce-loop;
+	animation-duration: 0.1;
+	animation-iteration-count: 10;
+}
+
+@keyframes bounce-loop {
+	0% {
+		transform: translateY(0);
+	} 10% {
+		transform: translateY(-4rem) scaleX(1.5);
+	} 25% {
+		transform: translateY(0) scaleX(1);
+	} 100% {
+	}
+}
