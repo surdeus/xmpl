@@ -11,7 +11,7 @@
 
 .middle {
   background-color: green;
-  display: inline-block;
+  display: block;
   float: none;
   width: 45%;
   position: relative;

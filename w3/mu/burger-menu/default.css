@@ -1,0 +1,91 @@
+:root {
+	--burger-width: 2rem;
+	--burger-line-gap: .3rem;
+}
+
+.menu .toggle {
+	opacity: 0;
+}
+
+.menu .btn {
+	display: flex;
+	align-items: center;
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	width: var(--burger-width);
+	height: 1rem;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.menu .btn > span,
+.menu .btn > span::before,
+.menu .btn > span::after {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 0.1rem;
+	background-color: #616161;
+}
+
+.menu .btn > span::before {
+	content: '';
+	top: calc(var(--burger-line-gap) * -1);
+}
+
+.menu .btn > span::after {
+	content: '';
+	top: var(--burger-line-gap);
+}
+
+.menu .box {
+	display: block;
+	position: fixed;
+	visibility: hidden;
+	top: 0;
+	left: -100%;
+
+	width: 30rem;
+	height: 100%;
+	margin: 0;
+	padding: 8rem 0;
+	list-style: none;
+	text-align: center;
+
+	background-color: #ECEFF1;
+	box-shadow: 0.1rem 0 .6rem rgba(0, 0, 0, .2);
+}
+
+.menu .box .item {
+	display: block;
+	padding: 1.2rem 2.4rem;
+	color #333;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.menu .box .item : hover {
+	background-color: #cfd8dc;
+}
+
+.menu .toggle:checked ~ .btn > span {
+	transform: rotate(45deg);
+}
+
+.menu .toggle:checked ~ .btn > span::before {
+	top: 0;
+	transform: rotate(0);	
+}
+
+.menu .toggle:checked ~ .btn > span::after {
+	top: 0;
+	transform: rotate(90deg);
+}
+
+.menu .toggle:checked ~ .box {
+	visibility: visible;
+	left: 0;
+}

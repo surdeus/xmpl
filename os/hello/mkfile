@@ -1,0 +1,2 @@
+all:V:
+	yasm -f bin -o hello.bin hello.s
