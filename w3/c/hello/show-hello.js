@@ -1,4 +1,9 @@
 "use strict";
+
+fetch("body.html")
+	.then(stream => stream.text())
+	.then(text => define(text))
+
 customElements.define("show-hello", class extends HTMLElement {
 	// Most of the callbacks are described.
 

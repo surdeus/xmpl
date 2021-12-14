@@ -1,6 +1,8 @@
 %{
    /* Definition section */
-  #include<stdio.h>
+  #include <stdio.h>
+  #include <lib9.h>
+  #include "y.tab.h"
   int flag=0;
 %}
   
@@ -41,21 +43,14 @@ ArithmeticExpression: E{
 %%
   
 //driver code
-void main()
+void main(int argc, char *argv[])
 {
-   printf("\nEnter Any Arithmetic Expression which"
-                   "can have operations Addition," 
-                   "Subtraction, Multiplication, Division", 
-                          "Modulus and Round brackets:\n");
-  
    yyparse();
-   if(flag==0)
-   printf("\nEntered arithmetic expression is Valid\n\n");
 }
   
 void yyerror()
 {
-   printf("\nEntered arithmetic expression is Invalid\n\n");
+   puts("Invalid arithmetic value.");
    flag=1;
 }
 
