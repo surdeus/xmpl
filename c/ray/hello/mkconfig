@@ -1,0 +1,10 @@
+<$MKINCDIR/config
+<$MKINCDIR/std/usegcc
+RAYPATH = $HOME/dev/raylib/src
+PROGNAME = hello
+CFILES = main.c
+AFILES = $RAYPATH/libraylib.a
+INCS = -I$RAYPATH
+LIBS = -lm -ldl -lpthread -lX11 -lxcb -lGL \
+	-lGLX -lXext -lGLdispatch -lXau -lXdmcp
+
