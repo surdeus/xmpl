@@ -1,0 +1,2 @@
+some shit
+{{template "2" .}}
