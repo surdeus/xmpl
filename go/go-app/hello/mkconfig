@@ -1,0 +1,7 @@
+MKSHELL = sh
+<$(MKINCDIR)/config
+CC = cc
+WATCH_FILES = tmpl src
+STATIC = dat/s
+BUILD_WASM = w3
+
