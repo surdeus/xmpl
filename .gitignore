@@ -1,4 +1,5 @@
 *.o
 *.dis
 *.class
+exe/*
 
