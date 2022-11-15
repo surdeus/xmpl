@@ -80,6 +80,7 @@ func (n *NameList)SetNames(names []string) app.UI {
 
 func (n *NameList)Add(name string) {
 	n.Names = append(n.Names, name)
+	n.Update()
 }
 
 func (h *Hello) Render() app.UI {
@@ -131,8 +132,8 @@ func (r *Root) OnMount(ctxt app.Context) {
 }
 
 func (h *Hello) OnMount(ctx app.Context) {
-	h.nameList = &NameList{Names: []string{"cocks", "sucks"}}
-	h.greeter = &Greeter{Name: ""}
+	//h.nameList = &NameList{Names: []string{"cocks", "sucks"}}
+	//h.greeter = &Greeter{Name: ""}
 }
 
 func (r *Root)Render() app.UI {
