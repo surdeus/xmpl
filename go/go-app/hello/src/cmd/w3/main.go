@@ -73,24 +73,33 @@ func (n *NameList) Render() app.UI {
 func (n *NameList)OnUpdate(ctx app.Context) {
 }
 
-func (n *NameList)SetNames(names []string) app.UI {
-	n.Names = names
-	return n
-}
-
 func (n *NameList)Add(name string) {
 	n.Names = append(n.Names, name)
 	n.Update()
 }
 
+func (g *Greeter)SetName(name string) {
+	g.Name = name
+	g.Update()
+}
+
 func (h *Hello) Render() app.UI {
+	var (
+		input app.UI
+	)
 	label := app.Label().
 		Text("Name")
 
 	placeholder := app.Div().Class("placeholder").
 		Text("length in between of 5 and 10 chars")
 
-	input := app.Input().
+	submitFunc := func(ctx app.Context, e app.Event){
+		h.nameList.Add(h.greeter.Name)
+		h.greeter.SetName("")
+		input.JSValue().Call("focus")
+	}
+
+	input = app.Input().Class("1").Class("2").
 		Type("text").
 		Required(true).
 		Attr("minlength", 5).
@@ -98,17 +107,18 @@ func (h *Hello) Render() app.UI {
 		Value(h.greeter.Name).
 		OnInput(func(ctx app.Context, e app.Event) {
 			v := ctx.JSSrc().Get("value")
-			h.greeter.Name = v.String()
+			h.greeter.SetName(v.String())
+		}).
+		OnKeyPress(func(ctx app.Context, e app.Event) {
+			if e.Value.Get("key").String() == "Enter" {
+				submitFunc(ctx, e)
+			}
 		}).
 		AutoFocus(true)
 
 	button := app.Input().
 		Type("button").
-		OnClick(func(ctx app.Context, e app.Event){
-			h.nameList.Add(h.greeter.Name)
-			h.greeter.Name = ""
-			input.JSValue().Call("focus")
-		}).
+		OnClick(submitFunc).
 		Value("Submit")
 
 	return app.Div().Class("hello").Body(
