@@ -95,7 +95,7 @@ func (h *Hello) Render() app.UI {
 		Attr("minlength", 5).
 		Attr("maxlength", 10).
 		Value(h.greeter.Name).
-		OnChange(func(ctx app.Context, e app.Event) {
+		OnInput(func(ctx app.Context, e app.Event) {
 			v := ctx.JSSrc().Get("value")
 			h.greeter.Name = v.String()
 		}).
@@ -106,6 +106,7 @@ func (h *Hello) Render() app.UI {
 		OnClick(func(ctx app.Context, e app.Event){
 			h.nameList.Add(h.greeter.Name)
 			h.greeter.Name = ""
+			input.JSValue().Call("focus")
 		}).
 		Value("Submit")
 
