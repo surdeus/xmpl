@@ -20,8 +20,9 @@ type Root struct {
 
 type Hello struct {
 	app.Compo
+	nameList *NameList
+	greeter *Greeter
 	name string
-	names []string
 }
 
 type Parent struct {
@@ -31,6 +32,23 @@ type Parent struct {
 type NameList struct {
 	app.Compo
 	Names []string
+}
+
+type Greeter struct {
+	app.Compo
+	Name string
+}
+
+func (g *Greeter) Render() app.UI {
+	return app.H1().Body(
+			app.Text("Hello, "),
+			app.If(g.Name != "",
+			app.Text(g.Name),
+			).Else(
+				app.Text("World"),
+			),
+			app.Text("!"),
+	)
 }
 
 func (p *Parent)Render() app.UI {
@@ -65,8 +83,6 @@ func (n *NameList)Add(name string) {
 }
 
 func (h *Hello) Render() app.UI {
-	inputVal := ""
-
 	label := app.Label().
 		Text("Name")
 
@@ -78,43 +94,44 @@ func (h *Hello) Render() app.UI {
 		Required(true).
 		Attr("minlength", 5).
 		Attr("maxlength", 10).
-		Value(inputVal).
-		OnChange(h.ValueTo(&h.name)).
+		Value(h.greeter.Name).
+		OnChange(func(ctx app.Context, e app.Event) {
+			v := ctx.JSSrc().Get("value")
+			h.greeter.Name = v.String()
+		}).
 		AutoFocus(true)
 
 	button := app.Input().
 		Type("button").
 		OnClick(func(ctx app.Context, e app.Event){
-			h.names = append(h.names, h.name)
+			h.nameList.Add(h.greeter.Name)
+			h.greeter.Name = ""
 		}).
 		Value("Submit")
 
-	return  app.Div().Body(
-		app.H1().Body(
-			app.Text("Hello, "),
-			app.If(h.name != "",
-			app.Text(h.name),
-			).Else(
-				app.Text("World"),
-			),
-			app.Text("!"),
-		),
+	return app.Div().Class("hello").Body(
+		h.greeter,
 		app.Div().Class("field name").Body(
 			label,
 			placeholder,
 			input,
 			button,
 		),
-		(&NameList{Names: h.names}),
+		h.nameList,
 	)
 }
 
 func (r *Root) OnMount(ctxt app.Context) {
 	r.Pages = map[string] app.UI {
-		"hello" : &Hello{},
+		"hello" : &Hello{nameList: &NameList{}, greeter: &Greeter{} },
 		"parent" : &Parent{},
 	}
 	r.Page = "hello"
+}
+
+func (h *Hello) OnMount(ctx app.Context) {
+	h.nameList = &NameList{Names: []string{"cocks", "sucks"}}
+	h.greeter = &Greeter{Name: ""}
 }
 
 func (r *Root)Render() app.UI {
