@@ -12,6 +12,12 @@ func (r *Res)Package() string { return "" }
 func (r *Res)Static() string { return "/s" }
 func (r *Res)AppWASM() string { return "/s/w3.wasm"}
 
+type Root struct {
+	app.Compo
+	Page string
+	Pages map[string] app.UI
+}
+
 type Hello struct {
 	app.Compo
 	name string
@@ -25,6 +31,12 @@ type Parent struct {
 type NameList struct {
 	app.Compo
 	Names []string
+}
+
+func (p *Parent)Render() app.UI {
+	return app.Div().Class("parent").Body(
+		app.H1().Text("The other shit"),
+	)
 }
 
 func (n *NameList) Render() app.UI {
@@ -51,7 +63,6 @@ func (n *NameList)SetNames(names []string) app.UI {
 func (n *NameList)Add(name string) {
 	n.Names = append(n.Names, name)
 }
-
 
 func (h *Hello) Render() app.UI {
 	inputVal := ""
@@ -98,8 +109,41 @@ func (h *Hello) Render() app.UI {
 	)
 }
 
+func (r *Root) OnMount(ctxt app.Context) {
+	r.Pages = map[string] app.UI {
+		"hello" : &Hello{},
+		"parent" : &Parent{},
+	}
+	r.Page = "hello"
+}
+
+func (r *Root)Render() app.UI {
+	nav := app.Nav().Class("nav").Body(
+		app.Input().
+			Type("button").
+			Value("hello").
+			OnClick( func(c app.Context, e app.Event) {
+				r.Page = "hello"
+			}),
+		app.Input().
+			Type("button").
+			Value("parent").
+			OnClick( func(c app.Context, e app.Event) {
+				r.Page = "parent"
+			}),
+
+	)
+
+	page, _ := r.Pages[r.Page]
+	return app.Div().Class("root").Body(
+		nav,
+		page,
+	)
+}
+
+
 func main() {
-	app.Route("/", &Hello{})
+	app.Route("/", &Root{} )
 	app.RunWhenOnBrowser()
 
 	r := &Res{}
