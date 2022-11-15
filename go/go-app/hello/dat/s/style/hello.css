@@ -7,3 +7,19 @@
 	font-size : smaller ;
 	color : gray ;
 }
+
+.name-list .name {
+	width : 100% ;
+	background-color : grey ;
+	transition : 0.3s ;
+}
+
+.name-list .name:nth-child(odd) {
+	background-color : black ;
+	color : white ;
+}
+
+.name-list .name:hover {
+	background-color : green ;
+}
+
