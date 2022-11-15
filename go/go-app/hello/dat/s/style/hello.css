@@ -1,0 +1,9 @@
+
+.field > label {
+	display : block ;
+}
+
+.field > .placeholder {
+	font-size : smaller ;
+	color : gray ;
+}
