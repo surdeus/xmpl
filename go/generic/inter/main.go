@@ -12,11 +12,11 @@ type SI I[string]
 
 type S string
 
-func (s S) GetValue() string {
-	return string(s)
+func (s S) GetValue() SI {
+	return s
 }
 
 func main() {
-	var i I[string] = S("suck")
+	var i I[SI] = S("suck")
 	fmt.Println(i.GetValue())
 }
