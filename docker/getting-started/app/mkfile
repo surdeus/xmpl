@@ -1,0 +1,9 @@
+all:VN: build
+
+build:V:
+	docker build -t getting-started .
+run:V:
+	docker run -p 127.0.0.1:3000:3000 getting-started
+kill:
+	docker kill getting-started
+
