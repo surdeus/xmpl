@@ -1,0 +1,19 @@
+from golang:latest
+
+#volume /app
+
+copy . /app
+cmd ls /app
+
+workdir /app
+run go mod tidy
+run mkdir -p exe
+
+workdir /app/src/cmd/hello
+run go build -o /app/exe/hello
+
+workdir /app
+
+cmd ["/app/exe/hello"]
+cmd ["sh", "-c", "while true ; do true ; done"]
+
