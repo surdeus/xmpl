@@ -3,8 +3,6 @@ services:
     hostname: app
     networks:
       - mynet
-    volumes:
-      - ./front:/app
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
@@ -12,25 +10,29 @@ services:
       MYSQL_DB: todos
       MYSQL_PORT: 3306
     working_dir: /app
-    build: ./front
+    build: ./app
     depends_on:
       - mysql
+        #volumes:
+        #- ./app:/app
+    restart: always
 
   mysql:
-    image: mysql:8.0
-    hostname: db
+    image: mariadb:latest
+    hostname: mysql
     networks:
       - mynet
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: todos
     ports:
+      - 33060:33060
       - 3306:3306
     volumes:
-      - todo-mysql-data:/var/lib/mysql
+      - ./volumes/mysql:/var/lib/mysql
 
-volumes:
-  todo-mysql-data:
+#volumes:
+  #todo-mysql-data:
 networks:
   mynet:
     driver: bridge

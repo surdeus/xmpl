@@ -5,6 +5,7 @@ import (
     "os"
 
     tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+    
 )
 
 var numericKeyboard = tgbotapi.NewReplyKeyboard(
@@ -20,8 +21,23 @@ var numericKeyboard = tgbotapi.NewReplyKeyboard(
     ),
 )
 
+var otherKeyboard = tgbotapi.NewReplyKeyboard(
+    tgbotapi.NewKeyboardButtonRow(
+        tgbotapi.NewKeyboardButton("a"),
+        tgbotapi.NewKeyboardButton("b"),
+        tgbotapi.NewKeyboardButton("c"),
+    ),
+    tgbotapi.NewKeyboardButtonRow(
+        tgbotapi.NewKeyboardButton("d"),
+        tgbotapi.NewKeyboardButton("e"),
+        tgbotapi.NewKeyboardButton("f"),
+    ),
+)
+
 func main() {
-    bot, err := tgbotapi.NewBotAPI(os.Getenv("BOT_TOKEN"))
+	token := os.Getenv("BOT_TOKEN")
+	
+    bot, err := tgbotapi.NewBotAPI(token)
     if err != nil {
         log.Panic(err)
     }
@@ -42,9 +58,13 @@ func main() {
 
         msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
 
+		log.Printf("%q\n", update.Message.Text)
         switch update.Message.Text {
         case "open":
             msg.ReplyMarkup = numericKeyboard
+        case "letters" :
+        	log.Println("in")
+            msg.ReplyMarkup = otherKeyboard
         case "close":
             msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
         }

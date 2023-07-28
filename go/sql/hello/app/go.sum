@@ -1,0 +1,6 @@
+github.com/go-sql-driver/mysql v1.7.1 h1:lUIinVbN1DY0xBg0eMOzmmtGoHwWBbvnWubQUrtU8EI=
+github.com/go-sql-driver/mysql v1.7.1/go.mod h1:OXbVy3sEdcQ2Doequ6Z5BW6fXNQTmx+9S1MCJN5yJMI=
+github.com/mojosa-software/godat v0.0.0-20230728174802-877ee125498e h1:I8wvVgPGq1wUU+GzOUUZBOzfcxFlXosBkUj3UcjSBhY=
+github.com/mojosa-software/godat v0.0.0-20230728174802-877ee125498e/go.mod h1:E6ohOj8PpUJBQOSRdrLygjoO+Te6yfeox3ZtaItsHUg=
+github.com/mojosa-software/gosrv v0.0.0-20230728175422-d797030ecf28 h1:Jv/sotPJW8OHqgKA19c094FsBeg+HMvO4uu0DLyO2uw=
+github.com/mojosa-software/gosrv v0.0.0-20230728175422-d797030ecf28/go.mod h1:UUy7aPDXfu1Z4k9I/FZW0CVGbEYmS1b4OD9GOa/uAnI=
