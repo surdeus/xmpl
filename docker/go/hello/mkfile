@@ -1,0 +1,15 @@
+all: bup
+
+up:V:
+	docker compose up
+
+down:V:
+	docker compose down
+
+up-build:V:
+	docker compose up --build
+
+bup:V:
+	docker compose down
+	docker compose up --build
+

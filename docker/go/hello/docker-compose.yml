@@ -1,0 +1,10 @@
+services:
+  hello:
+    build:
+      dockerfile: dockerfile
+      context: .
+      target: dev
+    volumes:
+      - type: bind
+        source: .
+        target: /app
