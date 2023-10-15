@@ -4,4 +4,5 @@
 *.wasm
 *.exe
 exe/
-
+node_modules
+ts/**/*.js
