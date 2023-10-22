@@ -3,6 +3,8 @@
 *.class
 *.wasm
 *.exe
+*.pyc
+__pycache__
 exe/
 node_modules
 ts/**/*.js
