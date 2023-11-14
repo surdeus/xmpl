@@ -6,4 +6,5 @@ tasks:
       - arduino-cli compile -b "arduino:avr:uno"
   upload:
     cmds:
-      - arduino-cli upload -b "arduino:avr:uno" -p "COM3"
+      - arduino-cli compile -v -u -p COM3 -b "arduino:avr:uno"
+        #- arduino-cli upload -b "arduino:avr:uno" -p COM3
