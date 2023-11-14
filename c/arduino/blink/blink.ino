@@ -1,13 +1,13 @@
 void setup() {
   // put your setup code here, to run once:
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(12, OUTPUT);
 }
 
-const int Delay = 100 ;
+const int Delay = 500 ;
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  digitalWrite(12, HIGH);  // turn the LED on (HIGH is the voltage level)
   delay(Delay);                      // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  digitalWrite(12, LOW);   // turn the LED off by making the voltage LOW
   delay(Delay);  
 }

@@ -1,6 +1,6 @@
 package pack
 
-//go:generate cat main.go
+//go:generate pwd
 
 var value string
 

@@ -1,0 +1,9 @@
+version: 3
+
+tasks:
+  build:
+    cmds:
+      - arduino-cli compile -b "arduino:avr:uno"
+  upload:
+    cmds:
+      - arduino-cli upload -b "arduino:avr:uno" -p "COM3"
